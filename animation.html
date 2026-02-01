@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Course - ADVFX</title>
+    <meta name="description" content="Master 2D & 3D animation techniques with industry-standard software and creative storytelling at ADVFX.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Asset 3.png" type="image/png">
+    <link rel="shortcut icon" href="Asset 3.png" type="image/png">
+    
+    <style>
+        /* Course Page Specific Styles */
+        .course-hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 195, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(160, 32, 240, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .course-hero__content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .course-hero__title {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00ffc3, #a020f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(0, 255, 195, 0.3);
+        }
+        
+        .course-hero__tagline {
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .course-section {
+            padding: 5rem 0;
+            background: #0a0a0a;
+        }
+        
+        .course-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .glassmorphism-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .glassmorphism-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 195, 0.1);
+            border-color: rgba(0, 255, 195, 0.3);
+        }
+        
+        .course-section__title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00ffc3;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .course-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .software-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .software-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 195, 0.2);
+            border-color: rgba(0, 255, 195, 0.5);
+        }
+        
+        .software-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #00ffc3, #a020f0);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .software-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 195, 0.2);
+        }
+        
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00ffc3, #a020f0);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .highlight-text {
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(0, 255, 195, 0.1), rgba(160, 32, 240, 0.1));
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #00ffc3, #a020f0);
+            color: #000;
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0, 255, 195, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 195, 0.5);
+            filter: brightness(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .course-hero__title {
+                font-size: 2.5rem;
+            }
+            
+            .course-hero__tagline {
+                font-size: 1.2rem;
+            }
+            
+            .glassmorphism-card {
+                padding: 2rem;
+            }
+            
+            .software-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <a href="index.html">
+                    <img src="Asset 3.png" alt="ADVFX Logo" class="nav__logo-img" />
+                </a>
+            </div>
+            
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#about" class="nav__link">About Us</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#courses" class="nav__link">Courses</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#contact" class="nav__link">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+            
+            <div class="nav__actions">
+                <a href="tel:+918595665546" class="btn btn-call" aria-label="Call Us">
+                    <span class="btn__icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 16.92V20a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h3.09a1 1 0 0 1 1 .75l1.2 4.49a1 1 0 0 1-.29 1L8.7 11.7a16 16 0 0 0 6.6 6.6l2.46-1.3a1 1 0 0 1 1 .06l3.87 2.3a1 1 0 0 1 .37 1.36z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="btn__text">Call</span>
+                </a>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="course-hero">
+            <div class="course-hero__content">
+                <h1 class="course-hero__title">Animation</h1>
+                <p class="course-hero__tagline">Master the art of bringing imagination to life</p>
+            </div>
+        </section>
+
+        <!-- About the Course Section -->
+        <section class="course-section">
+            <div class="course-container">
+                <div class="glassmorphism-card">
+                    <h2 class="course-section__title">About the Course</h2>
+                    <p class="course-description">
+                        Dive into the captivating world of animation where creativity meets technology. Our comprehensive Animation course covers both 2D and 3D animation techniques, from traditional hand-drawn methods to cutting-edge digital workflows. You'll learn character design, storytelling, rigging, lighting, and rendering while working on real-world projects that build your portfolio. Whether you dream of creating animated films, TV shows, commercials, or interactive media, this course provides the foundation and advanced skills needed to excel in the animation industry.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Software Covered Section -->
+        <section class="course-section">
+            <div class="course-container">
+                <div class="glassmorphism-card">
+                    <h2 class="course-section__title">Software Covered</h2>
+                    <div class="software-grid">
+                        <div class="software-card">
+                            <div class="software-icon">MA</div>
+                            <div class="software-name">Maya</div>
+                        </div>
+                        <div class="software-card">
+                            <div class="software-icon">BL</div>
+                            <div class="software-name">Blender</div>
+                        </div>
+                        <div class="software-card">
+                            <div class="software-icon">AE</div>
+                            <div class="software-name">After Effects</div>
+                        </div>
+                        <div class="software-card">
+                            <div class="software-icon">PS</div>
+                            <div class="software-name">Photoshop</div>
+                        </div>
+                        <div class="software-card">
+                            <div class="software-icon">AI</div>
+                            <div class="software-name">Illustrator</div>
+                        </div>
+                        <div class="software-card">
+                            <div class="software-icon">PR</div>
+                            <div class="software-name">Premiere Pro</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose ADVFX Section -->
+        <section class="course-section">
+            <div class="course-container">
+                <div class="glassmorphism-card">
+                    <h2 class="course-section__title">Why Choose ADVFX</h2>
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">👨‍🏫</div>
+                            <div class="highlight-text">Industry Expert Mentors</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🎯</div>
+                            <div class="highlight-text">100% Placement Support</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🚀</div>
+                            <div class="highlight-text">Real-World Projects</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🏆</div>
+                            <div class="highlight-text">Industry Recognition</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">💼</div>
+                            <div class="highlight-text">Portfolio Development</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🌟</div>
+                            <div class="highlight-text">Cutting-Edge Technology</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <div class="course-container">
+                <h2 class="course-section__title">Ready to Start Your Animation Journey?</h2>
+                <button class="cta-button" onclick="window.location.href='index.html?open=enquiry'">Enquire Now</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Include the enquiry popup from main site -->
+    <div id="enquiryPopup" class="enquiry-popup">
+        <div class="enquiry-popup__overlay" onclick="closeEnquiryPopup()"></div>
+        <div class="enquiry-popup__content">
+            <button class="enquiry-popup__close" onclick="closeEnquiryPopup()" aria-label="Close popup">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <div class="enquiry-popup__header">
+                <h2 class="enquiry-popup__title">Get Course Information</h2>
+                <p class="enquiry-popup__subtitle">Fill out the form below and we'll get back to you with detailed course information</p>
+            </div>
+            
+            <form class="enquiry-form" id="enquiryForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="enquiry-name" class="form-label">Full Name *</label>
+                        <input type="text" id="enquiry-name" name="name" class="form-input" required>
+                        <span class="form-error" id="enquiry-name-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="enquiry-email" class="form-label">Email Address *</label>
+                        <input type="email" id="enquiry-email" name="email" class="form-input" required>
+                        <span class="form-error" id="enquiry-email-error"></span>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="enquiry-phone" class="form-label">Phone Number *</label>
+                        <input type="tel" id="enquiry-phone" name="phone" class="form-input" required>
+                        <span class="form-error" id="enquiry-phone-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="enquiry-state" class="form-label">State *</label>
+                        <select id="enquiry-state" name="state" class="form-select" required>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Delhi">Delhi</option>
+                        </select>
+                        <span class="form-error" id="enquiry-state-error"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="enquiry-message" class="form-label">Message (Optional)</label>
+                    <textarea id="enquiry-message" name="message" class="form-textarea" rows="4" placeholder="Tell us about your goals and interests..."></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">
+                    <span class="submit-text">Send Enquiry</span>
+                    <span class="submit-loading" style="display: none;">Sending...</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918595665546" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.051 3.488"/>
+        </svg>
+        <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

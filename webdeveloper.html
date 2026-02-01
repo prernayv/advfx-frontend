@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Developer Course - ADVFX</title>
+    <meta name="description" content="Master modern web development with HTML5, CSS3, JavaScript, React, and responsive design techniques using industry-standard tools at ADVFX.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Asset 3.png" type="image/png">
+    <link rel="shortcut icon" href="Asset 3.png" type="image/png">
+    
+    <style>
+        /* Course Page Specific Styles */
+        .course-hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(0, 255, 195, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(160, 32, 240, 0.12) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .course-hero__content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .course-hero__title {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00ffc3, #a020f0, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(0, 255, 195, 0.3);
+        }
+        
+        .course-hero__tagline {
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .course-section {
+            padding: 5rem 0;
+            background: #0a0a0a;
+        }
+        
+        .course-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .glassmorphism-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .glassmorphism-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 195, 0.1);
+            border-color: rgba(0, 255, 195, 0.3);
+        }
+        
+        .course-section__title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00ffc3, #a020f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .course-section__description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        /* Gaming-style software cards */
+        .software-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .software-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(0, 255, 195, 0.18);
+            border-color: rgba(0, 255, 195, 0.4);
+        }
+        
+        .software-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem auto;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #000;
+            background: linear-gradient(135deg, #00ffc3, #a020f0);
+            box-shadow: 0 10px 30px rgba(160, 32, 240, 0.25), inset 0 0 12px rgba(255, 255, 255, 0.35);
+        }
+        
+        .software-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.2px;
+        }
+        
+        .why-choose {
+            background: linear-gradient(135deg, rgba(0, 255, 195, 0.05), rgba(160, 32, 240, 0.05));
+        }
+        
+        /* Gaming-style highlights grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .highlight-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(0, 255, 195, 0.14);
+            border-color: rgba(0, 255, 195, 0.35);
+        }
+        
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #000;
+            background: linear-gradient(135deg, #00ffc3, #a020f0);
+            box-shadow: 0 10px 24px rgba(160, 32, 240, 0.25), inset 0 0 10px rgba(255, 255, 255, 0.35);
+        }
+        
+        .highlight-text {
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(0, 255, 195, 0.06), rgba(160, 32, 240, 0.06));
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #00ffc3, #a020f0);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 255, 195, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 195, 0.4);
+            filter: brightness(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .course-hero__title {
+                font-size: 2.5rem;
+            }
+            
+            .course-hero__tagline {
+                font-size: 1.2rem;
+            }
+            
+            .course-section__title {
+                font-size: 2rem;
+            }
+            
+            .software-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <a href="index.html">
+                    <img src="Asset 3.png" alt="ADVFX Logo" class="nav__logo-img" />
+                </a>
+            </div>
+            
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#about" class="nav__link">About Us</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#courses" class="nav__link">Courses</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#contact" class="nav__link">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+            
+            <div class="nav__actions">
+                <a href="tel:+918595665546" class="btn btn-call" aria-label="Call Us">
+                    <span class="btn__icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 16.92V20a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h3.09a1 1 0 0 1 1 .75l1.2 4.49a1 1 0 0 1-.29 1L8.7 11.7a16 16 0 0 0 6.6 6.6l2.46-1.3a1 1 0 0 1 1 .06l3.87 2.3a1 1 0 0 1 .37 1.36z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="btn__text">Call</span>
+                </a>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="course-hero">
+        <div class="course-hero__content">
+            <h1 class="course-hero__title">Web Developer</h1>
+            <p class="course-hero__tagline">Build modern, responsive websites and web applications</p>
+        </div>
+    </section>
+
+    <!-- About Course Section -->
+    <section class="course-section">
+        <div class="course-container">
+            <div class="glassmorphism-card">
+                <h2 class="course-section__title">About the Course</h2>
+                <p class="course-section__description">
+                    Dive into the exciting world of web development where creativity meets technology. Our comprehensive Web Developer course covers everything from fundamental HTML and CSS to advanced JavaScript frameworks and responsive design. Learn to build stunning, interactive websites and web applications that work seamlessly across all devices and browsers.
+                </p>
+                <p class="course-section__description" style="margin-top: 2rem;">
+                    Whether you're starting from scratch or looking to enhance your coding skills, this course provides hands-on experience with modern development tools, version control, and industry best practices. Master front-end technologies, understand user experience principles, and prepare for a successful career in web development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Software Covered Section -->
+    <section class="course-section">
+        <div class="course-container">
+            <div class="glassmorphism-card">
+                <h2 class="course-section__title">Software Covered</h2>
+                <div class="software-grid">
+                    <div class="software-card">
+                        <div class="software-icon">VSC</div>
+                        <div class="software-name">VS Code</div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-icon">FG</div>
+                        <div class="software-name">Figma</div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-icon">HTML</div>
+                        <div class="software-name">HTML5</div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-icon">CSS</div>
+                        <div class="software-name">CSS3</div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-icon">JS</div>
+                        <div class="software-name">JavaScript</div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-icon">RE</div>
+                        <div class="software-name">React</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose ADVFX Section -->
+    <section class="course-section why-choose">
+        <div class="course-container">
+            <div class="glassmorphism-card">
+                <h2 class="course-section__title">Why Choose ADVFX for Web Development?</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">MT</div>
+                        <div class="highlight-text">Modern Technologies</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">IP</div>
+                        <div class="highlight-text">Industry Projects</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">JR</div>
+                        <div class="highlight-text">Job-Ready Skills</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">EM</div>
+                        <div class="highlight-text">Expert Mentorship</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="course-container">
+            <h2 class="course-section__title">Ready to Start Your Web Development Journey?</h2>
+            <button class="cta-button" onclick="window.location.href='index.html?open=enquiry'">Enquire Now</button>
+        </div>
+    </section>
+
+    <!-- Enquiry Popup (gaming-style) -->
+    <div id="enquiryPopup" class="enquiry-popup" aria-hidden="true">
+        <div class="enquiry-popup__overlay" onclick="closeEnquiryPopup()"></div>
+        <div class="enquiry-popup__container" role="dialog" aria-modal="true" aria-labelledby="enquiryPopupTitle">
+            <button class="enquiry-popup__close" onclick="closeEnquiryPopup()" aria-label="Close">
+                <span>&times;</span>
+            </button>
+            <div class="enquiry-popup__header">
+                <h3 id="enquiryPopupTitle" class="enquiry-popup__title">Enquire Now</h3>
+                <p class="enquiry-popup__subtitle">Fill in your details and we’ll reach out shortly</p>
+            </div>
+            <form class="enquiry-popup__form" id="enquiryFormWebDev">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name" required />
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required />
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Phone" required />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="state" placeholder="State" required />
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="3" placeholder="Message (optional)"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Include the enquiry modal from main site -->
+    <script src="script.js"></script>
+</body>
+</html>
