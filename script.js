@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', checkForAutoEnquiry);
             (window.API_BASE) ||
             (window.env && window.env.API_BASE) ||
             new URLSearchParams(window.location.search).get('apiBase') ||
-            'http://localhost:3000'
+            'https://advfx-backend.onrender.com'
         );
     }
     

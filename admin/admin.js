@@ -7,7 +7,7 @@ class AdminDashboard {
         this.enquiries = [];
         this.filteredEnquiries = [];
         this.currentEnquiry = null;
-        this.apiBase = (typeof window !== 'undefined' && window.API_BASE_URL) ? window.API_BASE_URL : 'http://localhost:3000';
+        this.apiBase = (typeof window !== 'undefined' && window.API_BASE_URL) ? window.API_BASE_URL : 'https://advfx-backend.onrender.com';
         this.authToken = localStorage.getItem('adminToken');
         
         this.init();

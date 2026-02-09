@@ -16,7 +16,7 @@ class SystemVerifier {
       offline: { status: 'pending', details: [] },
       overall: { status: 'pending', score: 0 }
     };
-    this.baseUrl = 'http://localhost:3000';
+    this.baseUrl = process.env.API_BASE_URL || 'http://localhost:3000';
   }
 
   log(message, type = 'info') {
