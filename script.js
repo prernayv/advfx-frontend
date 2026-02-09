@@ -1,3 +1,8 @@
+// ===== API CONFIG (PRODUCTION) =====
+window.API_BASE = "https://advfx-backend-1.onrender.com";
+
+
+
 /*==================== SHOW MENU ====================*/
 const navMenu = document.getElementById('nav-menu'),
       navToggle = document.getElementById('nav-toggle'),
