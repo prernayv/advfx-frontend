@@ -75,6 +75,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -84,6 +85,7 @@ body {
   background-color: var(--dark-bg);
   color: var(--text-color);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Lock background scroll when mobile menu is open */
@@ -336,8 +338,10 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
   z-index: 0;
   filter: brightness(0.65) contrast(1.05) saturate(1.1);
@@ -360,7 +364,8 @@ button {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
 }
 .hero__content {
   max-width: 700px;
@@ -1046,8 +1051,26 @@ button {
     grid-template-columns: 1fr;
   }
   
+  /* About stats: only this section scrolls horizontally on mobile */
   .about__stats {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: nowrap;
+    grid-template-columns: unset;
+    gap: 1rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    padding-bottom: 0.5rem;
+    margin-left: calc(-1 * var(--mb-1, 1rem));
+    margin-right: calc(-1 * var(--mb-1, 1rem));
+    padding-left: var(--mb-1, 1rem);
+    padding-right: var(--mb-1, 1rem);
+  }
+  .about__stats .stat__item {
+    flex: 0 0 auto;
+    min-width: min(260px, 78vw);
+    scroll-snap-align: start;
   }
   
   .newsletter__form {
@@ -2248,7 +2271,24 @@ button {
   }
   
   .about__stats {
-    flex-direction: column;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 1rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    padding-bottom: 0.5rem;
+    margin-left: calc(-1 * var(--mb-1, 1rem));
+    margin-right: calc(-1 * var(--mb-1, 1rem));
+    padding-left: var(--mb-1, 1rem);
+    padding-right: var(--mb-1, 1rem);
+  }
+  .about__stats .stat__item {
+    flex: 0 0 auto;
+    min-width: min(260px, 78vw);
+    scroll-snap-align: start;
   }
   
   .newsletter__form {
