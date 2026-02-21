@@ -1024,11 +1024,14 @@ button {
     top: -100%;
     left: 0;
     width: 100%;
-    background: rgba(18, 18, 18, 0.95);
+    min-height: calc(100vh - 4.5rem);
+    background: var(--dark-bg);
     backdrop-filter: blur(10px);
     padding: 4rem 0 3rem;
     transition: var(--transition);
     border-bottom: 2px solid var(--border-color);
+    z-index: 99;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   }
   
   .nav__menu.show-menu {
@@ -1050,6 +1053,7 @@ button {
     position: absolute;
     top: 1rem;
     right: 1.5rem;
+    z-index: 1;
   }
   
   .hero__title {
@@ -2252,11 +2256,14 @@ button {
     top: -100%;
     left: 0;
     width: 100%;
-    background: rgba(18, 18, 18, 0.95);
+    min-height: calc(100vh - 4.5rem);
+    background: var(--dark-bg);
     backdrop-filter: blur(10px);
     padding: 4rem 0 3rem;
     transition: var(--transition);
     border-bottom: 2px solid var(--border-color);
+    z-index: 99;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   }
   
   .nav__menu.show-menu {
@@ -2278,6 +2285,7 @@ button {
     position: absolute;
     top: 1rem;
     right: 1.5rem;
+    z-index: 1;
   }
   
   .hero__title {
@@ -2361,5 +2369,6 @@ button {
 }
 
 .category__card:hover,
- 
- 
+.course__card:hover {
+  animation: glow 2s infinite;
+}
