@@ -7,7 +7,7 @@ class AdminDashboard {
         this.enquiries = [];
         this.filteredEnquiries = [];
         this.currentEnquiry = null;
-        this.apiBase = (typeof window !== 'undefined' && window.API_BASE_URL) ? window.API_BASE_URL : 'https://advfx-backend.onrender.com';
+        this.apiBase = (typeof window !== 'undefined' && window.API_BASE_URL) ? window.API_BASE_URL : 'https://advfx-backend-1.onrender.com';
         this.authToken = localStorage.getItem('adminToken');
         
         this.init();
@@ -73,13 +73,19 @@ class AdminDashboard {
         try {
             this.showLoading(true);
             
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 20000);
+            
             const response = await fetch(`${this.apiBase}/api/admin/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, password })
+                body: JSON.stringify({ username, password }),
+                signal: controller.signal
             });
+            
+            clearTimeout(timeoutId);
             
             const result = await response.json();
             
@@ -95,9 +101,10 @@ class AdminDashboard {
         } catch (error) {
             console.error('Login error:', error);
             
-            // Check if it's a connection error (Failed to fetch)
-            if (error.message === 'Failed to fetch' || error instanceof TypeError) {
-                this.showToast('❌ Backend server is not running! Please start the server first.', 'error');
+            if (error.name === 'AbortError') {
+                this.showToast('❌ Backend took too long (e.g. Render cold start). Wait a minute and try again.', 'error');
+            } else if (error.message === 'Failed to fetch' || error instanceof TypeError) {
+                this.showToast('❌ Cannot reach backend. Check it is deployed and CORS allows this site.', 'error');
                 this.showServerInstructions();
             } else {
                 this.showToast(error.message || 'Login failed. Please try again.', 'error');
