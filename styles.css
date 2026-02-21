@@ -86,6 +86,11 @@ body {
   line-height: 1.6;
 }
 
+/* Lock background scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
 h1, h2, h3, h4 {
   color: var(--white-color);
   font-weight: var(--font-semi-bold);
@@ -1024,7 +1029,7 @@ button {
     top: -100%;
     left: 0;
     width: 100%;
-    min-height: calc(100vh - 4.5rem);
+    min-height: 100vh;
     background: var(--dark-bg);
     backdrop-filter: blur(10px);
     padding: 4rem 0 3rem;
@@ -1035,7 +1040,7 @@ button {
   }
   
   .nav__menu.show-menu {
-    top: 4.5rem;
+    top: 0;
   }
   
   .nav__list {
